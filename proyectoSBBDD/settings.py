@@ -54,7 +54,7 @@ ROOT_URLCONF = 'proyectoSBBDD.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['proyectoSBBDDAPP/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
