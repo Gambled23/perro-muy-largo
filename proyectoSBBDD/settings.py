@@ -78,8 +78,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'proyectosbbdd',
         'USER': 'postgres',
-        'PASSWORD': 'usuario',
-        'HOST': '127.0.0.1',
+        'PASSWORD': 'RTvAsfCAv3neSn',
+        'HOST': 'serverproyectoxdbbdd.postgres.database.azure.com',
         'DATABASE_PORT': '5432',
     }
 }
