@@ -9,6 +9,7 @@ class domicilio(models.Model):
     codigo_domicilio=models.BigAutoField(primary_key=True)
     calle=models.CharField(max_length=50)
     colonia=models.CharField(max_length=50)
+    
     numero=models.CharField(max_length=5)
     municipio=models.CharField(max_length=50)
     #Para que el el sitio de admin muestre la calle y no un objeto
