@@ -1,9 +1,9 @@
 # Manual para esta madre #
-## [Inicio](manage.py)
+### [Inicio](manage.py)
 Despues de clonar el repositorio:
 Antes de nada, es necesario instalar las librerías especificadas [aquí](requirements.txt) usando `pip install -r requirements.txt` desde la terminal en el root del proyecto.
 
-## Carpetas principales
+### Carpetas principales
 El proyecto se divide (de momento) en 2 carpetas, proyectoSBBDD y proyectoSBBDDAPP, la primera incluye los archivos globales para el funcionamiento de django, como es [settings.py](proyectoSBBDD/settings.py) o las [urls](proyectoSBBDD/urls.py) de la pagina web.
 Además está la carpeta proyectoSBBDDAPP dónde se encuentran la mayoría de archivos del proyecto, las plantillas HTML y las views (más adelante explicaré qué es una view)
 
