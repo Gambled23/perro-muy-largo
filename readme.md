@@ -79,7 +79,7 @@ Ahora, esto es de manera local, pues tienes que empujar estos cambios a la base 
 
 Casi siempre me da errores pq toi menso, entonces no recuerdo si es primero el comando makemigrations, luego sqlmigrate y al final migrate, y primero makemigrations, luego migrate y al ultimo sqlmigrate. No importa, si te falla en el 1er orden intentalo en el 2do xd.
 
-También notarás que en models.py hay unas tablas con una funcion `__self__`, esta no es necesaria, pero ya explicaré para qué sirve cuando explique el panel de administrador
+También notarás que en models.py hay unas tablas con una funcion `__self__`, esta no es obligatoria para la base de datos, pero ya explicaré para qué sirve cuando explique el panel de administrador
 
 ### Panel de administrador
 La mejor parte de django es q ya nos hace la mitad de la tarea, pues ya cuenta con un panel de administrador integrado que se conecta a nuestra base de datos, t tqm mucho django.
