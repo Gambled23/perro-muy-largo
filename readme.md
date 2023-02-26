@@ -13,7 +13,7 @@ Además, en DATABASES se encuentran los datos para conectarse a la base de datos
 Also ahí puedes cambiarle el lenguaje al panel de admin xd.
 
 --------
-### [views.py](proyectoSBBDDAPP\views.py)
+### [views.py](proyectoSBBDDAPP/views.py)
 En este archivo están todas las views de la página web, ya incluí yo todas las que creo vamos a necesitar, pero puedes añadir otra usando la siguiente sintaxis
 
 `def nombreView(request):`
@@ -21,7 +21,7 @@ En este archivo están todas las views de la página web, ya incluí yo todas la
 `    return render(request, 'nombreView.html')`
 
 **¿Qué es una view?**
-Cada funcion es una view, una view es basicamente el metodo que le dice a django que debe cargar ese archivo HTML, en el ejemplo anterior, esa función está diciendo que debe cargar __nombreView.html__, el cual en teoría, se encuentra en la carpeta [templates](proyectoSBBDDAPP\templates).
+Cada funcion es una view, una view es basicamente el metodo que le dice a django que debe cargar ese archivo HTML, en el ejemplo anterior, esa función está diciendo que debe cargar __nombreView.html__, el cual en teoría, se encuentra en la carpeta [templates](proyectoSBBDDAPP/templates).
 el metodo render puedde recibir, además, un diccionario, con el que podemos pasarle datos al documento HTML, pero ahorita no te voy a marear con eso pq me da flojera explicarlo.
 
 --------
@@ -30,12 +30,12 @@ el metodo render puedde recibir, además, un diccionario, con el que podemos pas
 Hay 2 archivos urls.py, uno dentro de proyectoSBBDD y otro dentro de proyectoSBBDDAPP, básicamente el de la 1ra carpeta se conecta al de la 2da carpeta, así que por ese no te preocupes.
 El importante es el que se encuentra dentro de proyectoSBBDDAPP, pues ahí están todas las urls que va a usar la página web, por ejemplo, **mipagina.com/home/** es una url, **mipagina.com/admin/** es otra, etc.
 
-En la linea 4 yo ya importé el archivo [views.py](proyectoSBBDDAPP\views.py) que expliqué más arriba, así que ya puedes usar cualquier view creada en ese archivo.
+En la linea 4 yo ya importé el archivo [views.py](proyectoSBBDDAPP/views.py) que expliqué más arriba, así que ya puedes usar cualquier view creada en ese archivo.
 Las urls se guardan, nuevamente, en una tupla, con la siguiente sintaxis
 
 `path('faq/', views.faq, name='faq')`
 
-'faq/' es el nombre que se pondra en el navegador de internet despues del .com (siempre debe tener un / al final), despues, views.faq es la view que se va a cargar al introducir esa url en el navegador, en este ejemplo, estamos diciendo que al entrar a mipagina.com/faq/ va a cargar la funcion faq que se encuentra en [views.py](proyectoSBBDDAPP\views.py), y si nos vamos a [views.py](proyectoSBBDDAPP\views.py) vemos que la funcion faq carga el documento [faq.html](proyectoSBBDDAPP\templates\faq.html). Por ultimo, name='faq' de momento solo es para darle formalidad, no es necesario, pero es buena practica incluirlo porque puede ayudarnos más adelante.
+'faq/' es el nombre que se pondra en el navegador de internet despues del .com (siempre debe tener un / al final), despues, views.faq es la view que se va a cargar al introducir esa url en el navegador, en este ejemplo, estamos diciendo que al entrar a mipagina.com/faq/ va a cargar la funcion faq que se encuentra en [views.py](proyectoSBBDDAPP/views.py), y si nos vamos a [views.py](proyectoSBBDDAPP/views.py) vemos que la funcion faq carga el documento [faq.html](proyectoSBBDDAPP/templates/faq.html). Por ultimo, name='faq' de momento solo es para darle formalidad, no es necesario, pero es buena practica incluirlo porque puede ayudarnos más adelante.
 
 No es necesario que los 3 campos de path() se llamen igual (faq, en este caso), pero es una buena practica, e intenta mantenerlo así para que en un futuro no confundamos archivos que son de la misma url pero se llaman diferente.
 
@@ -43,13 +43,13 @@ No es necesario que los 3 campos de path() se llamen igual (faq, en este caso), 
 ### Carpeta templates
 Por si aún no te has dado cuenta, dentro de proyectoSBBDDAPP hay una carpeta llamada templates, ahí están todos los documentos HTML que estaremos usando para la página, de momento ninguno tiene mucha cosa.
 
-Además del documento HTML de cada view, hay 3 extras, [base.html](proyectoSBBDDAPP\templates\base.html), [navBar.html](proyectoSBBDDAPP\templates\navBar.html) y [footer.html](proyectoSBBDDAPP\templates\footer.html). Estas son las plantillas principales, ahora no sé bien cómo explicarlo así q lo dejo para luego XD.
+Además del documento HTML de cada view, hay 3 extras, [base.html](proyectoSBBDDAPP/templates/base.html), [navBar.html](proyectoSBBDDAPP/templates/navBar.html) y [footer.html](proyectoSBBDDAPP/templates/footer.html). Estas son las plantillas principales, ahora no sé bien cómo explicarlo así q lo dejo para luego XD.
 De momento parece que django es más complicado q HTML, y sí, pero ahorra bastante trabajo a la larga gracias a estas plantillas que acabo de mencionar.
 
 ### Iniciar el server
-Para iniciar el servidor web (suponiendo que ya instalaste requirements.txt), solo debes abrir la terminal en el root del proyecto y escribir `python .\manage.py runserver`. Esto iniciará el servidor y te dará la direccion en la que se inició, por defecto es 
+Para iniciar el servidor web (suponiendo que ya instalaste requirements.txt), solo debes abrir la terminal en el root del proyecto y escribir `python ./manage.py runserver`. Esto iniciará el servidor y te dará la direccion en la que se inició, por defecto es 
 127.0.0.1:8000/ si no mal recuerdo.
-Al entrar a esta direccion ya puedes ver la página, como está en [urls.py](proyectoSBBDDAPP/urls.py) `path('', views.home, name='home'),`, es decir, cuando no hay ninguna direccion especificada se carga la view home, y viendo [views.py](proyectoSBBDDAPP\views.py) vemos que la view home carga el archivo [home.html](proyectoSBBDDAPP\templates\home.html).
+Al entrar a esta direccion ya puedes ver la página, como está en [urls.py](proyectoSBBDDAPP/urls.py) `path('', views.home, name='home'),`, es decir, cuando no hay ninguna direccion especificada se carga la view home, y viendo [views.py](proyectoSBBDDAPP/views.py) vemos que la view home carga el archivo [home.html](proyectoSBBDDAPP/templates/home.html).
 
 Puedes ir a distintas urls para probar los distintos HTML, y por si olvidé mencionarlo, cada view que crees y quieras asignarla a una URL especifica, debes agregarla a [urls.py](proyectoSBBDDAPP/urls.py) con la sintaxis que mencioné más arriba.
 
@@ -72,9 +72,9 @@ Siempre se debe especificar que pertenece a models, y como es un metodo, no olvi
 Para eliminar o modificar una tabla, a diferencia de en SQL común, aquí basta con modificar la clase que creaste y que contiene la tabla, si quieres agregarle un campo simplemente lo agregas en el .py, si quieres eliminar la tabla simplemente eliminas la clase.
 
 Ahora, esto es de manera local, pues tienes que empujar estos cambios a la base de datos. Una vez hayas terminado de crear las tablas que quieras, debes abrir la consola como cuando iniciaste el servidor, y escribir los siguientes comando.
-` python .\manage.py makemigrations` Esto pone los cambios 'en la mesa'
-`python .\manage.py sqlmigrate proyectoSBBDDAPP 0001`(el 0001 es el numero que dio al hacer el comando anterior, puede ser 0001,0002, etc)
-`python .\manage.py migrate` Este comando agarra los cambios que ya habías puesto sobre la mesa, y los hace oficiales en la base de datos.
+` python ./manage.py makemigrations` Esto pone los cambios 'en la mesa'
+`python ./manage.py sqlmigrate proyectoSBBDDAPP 0001`(el 0001 es el numero que dio al hacer el comando anterior, puede ser 0001,0002, etc)
+`python ./manage.py migrate` Este comando agarra los cambios que ya habías puesto sobre la mesa, y los hace oficiales en la base de datos.
 
 
 Casi siempre me da errores pq toi menso, entonces no recuerdo si es primero el comando makemigrations, luego sqlmigrate y al final migrate, y primero makemigrations, luego migrate y al ultimo sqlmigrate. No importa, si te falla en el 1er orden intentalo en el 2do xd.
@@ -83,4 +83,5 @@ También notarás que en models.py hay unas tablas con una funcion `__self__`, e
 
 ### Panel de administrador
 La mejor parte de django es q ya nos hace la mitad de la tarea, pues ya cuenta con un panel de administrador integrado que se conecta a nuestra base de datos, t tqm mucho django.
-Luego sigo explicando lol
+
+Para ingresar al panel de administrador debes entrar a [127.0.0.1:8000/admin/](127.0.0.1:8000/admin/), en este 
