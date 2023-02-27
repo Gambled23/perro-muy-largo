@@ -9,7 +9,6 @@ class domicilio(models.Model):
     codigo_domicilio=models.BigAutoField(primary_key=True)
     calle=models.CharField(max_length=50)
     colonia=models.CharField(max_length=50)
-    
     numero=models.CharField(max_length=5)
     municipio=models.CharField(max_length=50)
     #Para que el el sitio de admin muestre la calle y no un objeto
@@ -17,10 +16,10 @@ class domicilio(models.Model):
         return f'[{self.codigo_domicilio}] {self.calle}, {self.colonia}'
 
 class usuario(models.Model):
+    codigo_cliente=models.BigAutoField(primary_key=True)
     codigo_domicilio=models.OneToOneField(domicilio, 
                                           on_delete=models.CASCADE)
     nombre=models.CharField(max_length=50)
-    codigo_cliente=models.BigAutoField(primary_key=True)
     telefono=models.CharField(max_length=10)
     def __str__(self):
         return f'[{self.codigo_cliente}] {self.nombre}'
