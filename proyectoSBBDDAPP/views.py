@@ -1,4 +1,6 @@
 from django.shortcuts import render, HttpResponse
+from proyectoSBBDDAPP.models import tecnico
+from proyectoSBBDD.forms import formulario_reporte
 
 def login(request):
     return render(request, 'login.html')
@@ -7,7 +9,17 @@ def home(request):
     return render(request, 'home.html')
 
 def generate_report(request):
-    return render(request, 'generate_report.html')
+    if request.method=='POST': #Qué se hará al usar el metodo post
+        miFormulario = formulario_reporte(request.POST) #para que en el formulario venga la informacion que introdujo el usuario en POST
+        if miFormulario.is_valid():
+            infForm = miFormulario.cleaned_data
+            #AQUÍ HACER LO Q SE TENGA Q HACER CON EL FORM
+            return render(request, 'gracias.html')
+    else:
+        miFormulario=formulario_reporte()
+        
+        #Construir documento html con los datos dentro de miFormulario
+    return render(request, 'generate_report.html', {'form': miFormulario}) #le decimos que va a renderizar generate_report.html usando un formulario guardado en miFormulario
 
 def report_status(request):
     return render(request, 'report_status.html')
@@ -19,4 +31,6 @@ def contact(request):
     return render(request, 'contact.html')
 
 def faq(request):
+    
+
     return render(request, 'faq.html')
