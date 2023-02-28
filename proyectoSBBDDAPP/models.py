@@ -35,4 +35,10 @@ class reporte(models.Model):
     estado_reporte=models.BooleanField(default=False)
     codigo_cliente=models.OneToOneField(usuario, on_delete=models.CASCADE)
     codigo_tecnico=models.OneToOneField(tecnico, on_delete=models.CASCADE)
+
+class registros(models.Model):
+    id_consulta = models.BigAutoField(primary_key=True)
+    folio = folio=models.OneToOneField(reporte, on_delete=models.CASCADE)
+    
+    fecha = models.DateTimeField()
     
