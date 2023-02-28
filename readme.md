@@ -5,6 +5,7 @@ Antes de nada, es necesario instalar las librerías especificadas [aquí](requir
 
 ### Carpetas principales
 El proyecto se divide (de momento) en 2 carpetas, proyectoSBBDD y proyectoSBBDDAPP, la primera incluye los archivos globales para el funcionamiento de django, como es [settings.py](proyectoSBBDD/settings.py) o las [urls](proyectoSBBDD/urls.py) de la pagina web.
+a
 Además está la carpeta proyectoSBBDDAPP dónde se encuentran la mayoría de archivos del proyecto, las plantillas HTML y las views (más adelante explicaré qué es una view)
 
 ### [settings.py](proyectoSBBDD/settings.py)
