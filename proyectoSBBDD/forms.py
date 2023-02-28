@@ -8,6 +8,6 @@ opcionesFormReporte =(
 
 
 class formulario_reporte(forms.Form):
-    num_usuario = forms.CharField()
+    num_usuario = forms.IntegerField()
     movtivo_reporte = forms.ChoiceField(choices= opcionesFormReporte)
     
