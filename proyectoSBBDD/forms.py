@@ -10,4 +10,9 @@ opcionesFormReporte =(
 class formulario_reporte(forms.Form):
     num_usuario = forms.IntegerField()
     movtivo_reporte = forms.ChoiceField(choices= opcionesFormReporte)
+
+class formulario_contacto(forms.Form):
+    email = forms.EmailField()
+    asunto = forms.CharField()
+    descripcion = forms.CharField(widget=forms.TextInput(attrs={'size':80}))
     
