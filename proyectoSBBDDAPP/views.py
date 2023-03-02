@@ -3,9 +3,6 @@ from proyectoSBBDDAPP.models import tecnico
 from proyectoSBBDD.forms import formulario_reporte
 from proyectoSBBDD.forms import formulario_contacto
 
-def login(request):
-    return render(request, 'login.html')
-
 def home(request):
     return render(request, 'home.html')
 

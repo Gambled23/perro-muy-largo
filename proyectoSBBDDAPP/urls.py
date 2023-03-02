@@ -4,7 +4,6 @@ from django.urls import path
 from proyectoSBBDDAPP import views
 
 urlpatterns = [
-    path('login/', views.login, name='login'),
     path('', views.home, name='home'),
     path('generate_report/', views.generate_report, name='generate_report'),
     path('report_status/', views.report_status, name='report_status'),
