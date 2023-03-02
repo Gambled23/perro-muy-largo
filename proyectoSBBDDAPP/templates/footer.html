@@ -3,13 +3,13 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm">
-                    <button type="button" class="btn btn-link">Sobre nosotros</button>
+                    <button type="button" class="btn btn-link" onclick="location.href = `{% url 'about_us' %}`">Sobre nosotros</button>
                 </div>
                 <div class="col-sm">
-                    <button type="button" class="btn btn-link">Contacto</button>
+                    <button type="button" class="btn btn-link" onclick="location.href = `{% url 'contact' %}`">Contacto</button>
                 </div>
                 <div class="col-sm">
-                    <button type="button" class="btn btn-link">Preguntas frecuentes</button>
+                    <button type="button" class="btn btn-link" onclick="location.href = `{% url 'faq' %}`">Preguntas frecuentes</button>
                 </div>
             </div>
         </div>

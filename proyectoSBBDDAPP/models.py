@@ -39,6 +39,5 @@ class reporte(models.Model):
 class registros(models.Model):
     id_consulta = models.BigAutoField(primary_key=True)
     folio = folio=models.OneToOneField(reporte, on_delete=models.CASCADE)
-    
     fecha = models.DateTimeField()
     

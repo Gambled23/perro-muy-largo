@@ -3,13 +3,13 @@
     <div class="container">
         <div class="row">
             <div class="col-sm">
-                <button type="button" class="btn btn-link">Generar reporte</button>
+                <button type="button" class="btn btn-link" onclick="location.href = `{% url 'generate_report' %}`">Generar reporte</button>
             </div>
             <div class="col-sm">
-                <button type="button" class="btn btn-link">Consultar reporte</button>
+                <button type="button" class="btn btn-link" onclick="location.href = `{% url 'report_status' %}`">Consultar reporte</button>
             </div>
             <div class="col-sm">
-                <button type="button" class="btn btn-link"> cerrar sesion</button>
+                <button type="button" class="btn btn-link" onclick="location.href = '/'"> cerrar sesion</button>
             </div>
         </div>
     </div>
