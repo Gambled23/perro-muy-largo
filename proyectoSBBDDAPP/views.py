@@ -2,9 +2,11 @@ from django.shortcuts import render, HttpResponse
 from proyectoSBBDDAPP.models import tecnico
 from proyectoSBBDD.forms import formulario_reporte
 from proyectoSBBDD.forms import formulario_contacto
-
 def home(request):
-    return render(request, 'home.html')
+    context  = {
+        'image' : '1'
+    }
+    return render(request, 'home.html', context)
 
 def generate_report(request):
     if request.method=='POST': #Qué se hará al usar el metodo post
