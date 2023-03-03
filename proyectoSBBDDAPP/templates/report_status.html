@@ -10,7 +10,14 @@
 </head>
 <body>
     {% block content %}
-    Estado del reporte
+    <form action="" method="POST"> {% csrf_token %}
+
+        <table>
+            {{form.as_table}}
+        </table>
+        <input type="submit" value="Enviar">
+
+    </form>
     {% endblock %}
 </body>
 </html>

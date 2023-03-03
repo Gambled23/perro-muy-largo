@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block title %}Consultar reporte{% endblock %}
+
+<html>
+    <body>
+        {% block content %}
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Folio de reporte</th>
+                <th scope="col">Cliente</th>
+                <th scope="col">Motivo de reporte</th>
+                <th scope="col">Estado de reporte</th>
+                <th scope="col">Tecnico asignado</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">{{reporte.folio}}</th>
+                <td>{{reporte.codigo_cliente}}</td>
+                {% if reporte.motivo_reporte == 1 %}
+                    <td>Falta de agua</td>
+                {% elif reporte.motivo_reporte == 2 %}
+                    <td>Contaminacion de agua</td>
+                {% else %}
+                    <td>Poca cantidad de agua</td>
+                {% endif %}
+                {% if reporte.estado_reporte == False%}
+                    <td>Sin resolver</td>
+                {% else %}
+                    <td>Resuelto</td>
+                {% endif %}
+                    <td>{{reporte.codigo_tecnico}}</td>
+              </tr>
+            </tbody>
+          </table>
+        {% endblock %}
+    </body>
+</html>

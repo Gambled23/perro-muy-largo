@@ -2,6 +2,7 @@ from django.shortcuts import render, HttpResponse
 from proyectoSBBDDAPP.models import tecnico
 from proyectoSBBDD.forms import formulario_reporte
 from proyectoSBBDD.forms import formulario_contacto
+from proyectoSBBDD.forms import formulario_estado_reporte
 from proyectoSBBDDAPP.models import reporte, usuario, tecnico
 
 def home(request):
@@ -12,9 +13,9 @@ def home(request):
 
 def generate_report(request):
     if request.method=='POST': #Qué se hará al usar el metodo post
-        miFormulario = formulario_reporte(request.POST) #para que en el formulario venga la informacion que introdujo el usuario en POST
-        if miFormulario.is_valid():
-            infForm = miFormulario.cleaned_data
+        formularioCrearReporte = formulario_reporte(request.POST) #para que en el formulario venga la informacion que introdujo el usuario en POST
+        if formularioCrearReporte.is_valid():
+            infForm = formularioCrearReporte.cleaned_data
             motivo_reporte = infForm['movtivo_reporte']
             cod_cliente = infForm['num_usuario']
             usuarioBD = usuario.objects.all()
@@ -24,35 +25,47 @@ def generate_report(request):
                 #cod_cliente-1 funca pq los datos se guardan en serial auto
             rep.save()
             folio_reporte = reporte.objects.latest('folio')
-            print(folio_reporte.folio)
             context = {
                 'motivo_reporte' : motivo_reporte,
                 'folio_reporte' : folio_reporte.folio,
             }
-            return render(request, 'gracias.html', context)
+            return render(request, 'generated_report.html', context)
     else:
-        miFormulario=formulario_reporte()
+        formularioCrearReporte=formulario_reporte()
         
-        #Construir documento html con los datos dentro de miFormulario
-    return render(request, 'generate_report.html', {'form': miFormulario}) #le decimos que va a renderizar generate_report.html usando un formulario guardado en miFormulario
+        #Construir documento html con los datos dentro de formularioCrearReporte
+    return render(request, 'generate_report.html', {'form': formularioCrearReporte}) #le decimos que va a renderizar generate_report.html usando un formulario guardado en formularioCrearReporte
 
 def report_status(request):
-
-    return render(request, 'report_status.html')
+    if request.method=='POST': #Qué se hará al usar el metodo post
+        formularioConsultarReporte = formulario_estado_reporte(request.POST) #para que en el formulario venga la informacion que introdujo el usuario en POST
+        if formularioConsultarReporte.is_valid():
+            infForm = formularioConsultarReporte.cleaned_data
+            folio_reporte = infForm['folio_reporte']
+            reporteConsultado = reporte.objects.get(folio=folio_reporte)
+            context = {
+                'reporte' : reporteConsultado,
+            }
+            return render(request, 'report_found.html', context)
+    else:
+        formularioConsultarReporte=formulario_estado_reporte()
+        
+        #Construir documento html con los datos dentro de formularioCrearReporte
+    return render(request, 'report_status.html', {'form': formularioConsultarReporte})
 
 def about_us(request):
     return render(request, 'about_us.html')
 
 def contact(request):
     if request.method=='POST': #Qué se hará al usar el metodo post
-        miFormulario = formulario_contacto(request.POST) #para que en el formulario venga la informacion que introdujo el usuario en POST
-        if miFormulario.is_valid():
-            infForm = miFormulario.cleaned_data
+        formularioCrearReporte = formulario_contacto(request.POST) #para que en el formulario venga la informacion que introdujo el usuario en POST
+        if formularioCrearReporte.is_valid():
+            infForm = formularioCrearReporte.cleaned_data
             #AQUÍ HACER LO Q SE TENGA Q HACER CON EL FORM
             return render(request, 'gracias.html')
     else:
-        miFormulario=formulario_contacto()
-    return render(request, 'contact.html', {'form': miFormulario})
+        formularioCrearReporte=formulario_contacto()
+    return render(request, 'contact.html', {'form': formularioCrearReporte})
 
 def faq(request):
     

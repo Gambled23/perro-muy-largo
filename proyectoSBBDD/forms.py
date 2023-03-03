@@ -15,4 +15,7 @@ class formulario_contacto(forms.Form):
     email = forms.EmailField()
     asunto = forms.CharField()
     descripcion = forms.CharField(widget=forms.TextInput(attrs={'size':80}))
+
+class formulario_estado_reporte(forms.Form):
+    folio_reporte = forms.IntegerField()
     
