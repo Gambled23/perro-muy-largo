@@ -21,7 +21,7 @@ def generate_report(request):
             usuarioBD = usuario.objects.all()
             #Guardar reporte en BD
             tecnicoBD = tecnico.objects.all()
-            rep = reporte(motivo_reporte=motivo_reporte, codigo_cliente=usuarioBD[cod_cliente-1], codigo_tecnico=tecnicoBD[2]) #ostia puta q hice aqui q crack
+            rep = reporte(motivo_reporte=motivo_reporte, codigo_cliente=usuarioBD[cod_cliente-1], codigo_tecnico=tecnicoBD[0]) #ostia puta q hice aqui q crack
                 #cod_cliente-1 funca pq los datos se guardan en serial auto
             rep.save()
             folio_reporte = reporte.objects.latest('folio')
