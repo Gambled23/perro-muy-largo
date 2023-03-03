@@ -3,7 +3,7 @@ from proyectoSBBDDAPP.models import tecnico
 from proyectoSBBDD.forms import formulario_reporte
 from proyectoSBBDD.forms import formulario_contacto
 from proyectoSBBDD.forms import formulario_estado_reporte
-from proyectoSBBDDAPP.models import reporte, usuario, tecnico
+from proyectoSBBDDAPP.models import reporte, usuario, tecnico, registros
 
 def home(request):
     context  = {
@@ -41,6 +41,11 @@ def report_status(request):
         formularioConsultarReporte = formulario_estado_reporte(request.POST) #para que en el formulario venga la informacion que introdujo el usuario en POST
         if formularioConsultarReporte.is_valid():
             infForm = formularioConsultarReporte.cleaned_data
+            #Guardar consulta en tabla registros
+            reg = registros(folio=infForm['folio_reporte'])
+            reg.save()
+            
+            #Buscar consulta en BD
             folio_reporte = infForm['folio_reporte']
             reporteConsultado = reporte.objects.get(folio=folio_reporte)
             context = {
