@@ -1,5 +1,11 @@
+{% extends 'base.html' %}
+{% block title %}Generar reporte{% endblock %}
+
 <html>
     <body>
-        Gracias
+        {% block content %}
+        <h1>Gracias por generar un reporte, muy pronto un especialista irá a visitarlo</h1>
+        <h2>Recuerde guardar su numero de reporte: {{folio_reporte}}</h2>
+        {% endblock %}
     </body>
 </html>

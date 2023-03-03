@@ -6,7 +6,7 @@ from proyectoSBBDDAPP.models import reporte, usuario, tecnico
 
 def home(request):
     context  = {
-        'image' : '1'
+        'test' : 'xd'
     }
     return render(request, 'home.html', context)
 
@@ -17,14 +17,19 @@ def generate_report(request):
             infForm = miFormulario.cleaned_data
             motivo_reporte = infForm['movtivo_reporte']
             cod_cliente = infForm['num_usuario']
-            #Obtener instancia usuario from num_usuario
             usuarioBD = usuario.objects.all()
             #Guardar reporte en BD
             tecnicoBD = tecnico.objects.all()
             rep = reporte(motivo_reporte=motivo_reporte, codigo_cliente=usuarioBD[cod_cliente-1], codigo_tecnico=tecnicoBD[0]) #ostia puta q hice aqui q crack
                 #cod_cliente-1 funca pq los datos se guardan en serial auto
             rep.save()
-            return render(request, 'gracias.html')
+            folio_reporte = reporte.objects.latest('folio')
+            print(folio_reporte.folio)
+            context = {
+                'motivo_reporte' : motivo_reporte,
+                'folio_reporte' : folio_reporte.folio,
+            }
+            return render(request, 'gracias.html', context)
     else:
         miFormulario=formulario_reporte()
         
@@ -32,6 +37,7 @@ def generate_report(request):
     return render(request, 'generate_report.html', {'form': miFormulario}) #le decimos que va a renderizar generate_report.html usando un formulario guardado en miFormulario
 
 def report_status(request):
+
     return render(request, 'report_status.html')
 
 def about_us(request):
