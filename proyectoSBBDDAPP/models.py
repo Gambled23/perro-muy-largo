@@ -32,9 +32,10 @@ class tecnico(models.Model):
 
 class reporte(models.Model):
     folio=models.BigAutoField(primary_key=True)
+    motivo_reporte=models.IntegerField(default=1)
     estado_reporte=models.BooleanField(default=False)
-    codigo_cliente=models.OneToOneField(usuario, on_delete=models.CASCADE)
-    codigo_tecnico=models.OneToOneField(tecnico, on_delete=models.CASCADE)
+    codigo_cliente=models.ForeignKey(usuario, on_delete=models.CASCADE, default=0)
+    codigo_tecnico=models.ForeignKey(tecnico, on_delete=models.CASCADE, default=0)
 
 class registros(models.Model):
     id_consulta = models.BigAutoField(primary_key=True)

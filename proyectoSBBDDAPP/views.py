@@ -2,6 +2,8 @@ from django.shortcuts import render, HttpResponse
 from proyectoSBBDDAPP.models import tecnico
 from proyectoSBBDD.forms import formulario_reporte
 from proyectoSBBDD.forms import formulario_contacto
+from proyectoSBBDDAPP.models import reporte, usuario, tecnico
+
 def home(request):
     context  = {
         'image' : '1'
@@ -13,7 +15,15 @@ def generate_report(request):
         miFormulario = formulario_reporte(request.POST) #para que en el formulario venga la informacion que introdujo el usuario en POST
         if miFormulario.is_valid():
             infForm = miFormulario.cleaned_data
-            #AQUÍ HACER LO Q SE TENGA Q HACER CON EL FORM
+            motivo_reporte = infForm['movtivo_reporte']
+            cod_cliente = infForm['num_usuario']
+            #Obtener instancia usuario from num_usuario
+            usuarioBD = usuario.objects.all()
+            #Guardar reporte en BD
+            tecnicoBD = tecnico.objects.all()
+            rep = reporte(motivo_reporte=motivo_reporte, codigo_cliente=usuarioBD[cod_cliente-1], codigo_tecnico=tecnicoBD[0]) #ostia puta q hice aqui q crack
+                #cod_cliente-1 funca pq los datos se guardan en serial auto
+            rep.save()
             return render(request, 'gracias.html')
     else:
         miFormulario=formulario_reporte()
