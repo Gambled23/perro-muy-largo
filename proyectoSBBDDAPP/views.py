@@ -44,7 +44,7 @@ def report_status(request):
             #Guardar consulta en tabla registros
             reg = registros(folio=infForm['folio_reporte'])
             reg.save()
-            
+
             #Buscar consulta en BD
             folio_reporte = infForm['folio_reporte']
             reporteConsultado = reporte.objects.get(folio=folio_reporte)
@@ -76,3 +76,7 @@ def faq(request):
     
 
     return render(request, 'faq.html')
+
+def test(request):
+
+    return render(request, 'test.html')

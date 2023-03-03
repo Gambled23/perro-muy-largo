@@ -1,5 +1,6 @@
 from django import forms
 
+
 opcionesFormReporte =(
     ("1", "Falta de agua"),
     ("2", "Contaminacion de agua"),
