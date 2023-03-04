@@ -1,9 +1,7 @@
 from django.shortcuts import render, HttpResponse
 from proyectoSBBDDAPP.models import tecnico
-from proyectoSBBDD.forms import formulario_reporte
-from proyectoSBBDD.forms import formulario_contacto
-from proyectoSBBDD.forms import formulario_estado_reporte
-from proyectoSBBDDAPP.models import reporte, usuario, tecnico, registros
+from proyectoSBBDD.forms import formulario_reporte, formulario_contacto, formulario_estado_reporte, formulario_registrar_usuario
+from proyectoSBBDDAPP.models import reporte, usuario, tecnico, domicilio, registros
 
 def home(request):
     context  = {
@@ -82,5 +80,22 @@ def test(request):
     return render(request, 'test.html')
 
 def register_user(request):
+    if request.method=='POST': 
+        formularioRegistrarUsuario = formulario_registrar_usuario(request.POST)
+        if formularioRegistrarUsuario.is_valid():
+            infForm = formularioRegistrarUsuario.cleaned_data
+            #Crear domicilio
+            dom = domicilio(calle=infForm['calle'], colonia=infForm['colonia'], numero=infForm['numero'], municipio=infForm['municipio'])
+            dom.save()
 
-    return render(request, 'register_user.html')
+            #Crear usuario
+            #Obtener ultimo domicilio creado
+            ultimoDomicilio = domicilio.objects.latest('codigo_domicilio')
+
+            usr = usuario(nombre=infForm['nombre'], telefono=infForm['telefono'], codigo_domicilio=ultimoDomicilio)
+            usr.save()
+
+            return render(request, 'user_registered.html')
+    else:
+        formularioRegistrarUsuario=formulario_registrar_usuario()
+    return render(request, 'register_user.html', {'form': formularioRegistrarUsuario})

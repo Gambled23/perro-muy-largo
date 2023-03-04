@@ -1,10 +1,17 @@
 {% extends 'base.html' %}
-{% block title %}feliz viernes{% endblock %}
+{% block title %}Registrar usuario{% endblock %}
 
 <html>
     <body>
         {% block content %}
-        testing
+        <form action="" method="POST"> {% csrf_token %}
+
+            <table>
+                {{form.as_table}}
+            </table>
+            <input type="submit" value="Registrar">
+            
+        </form>
         {% endblock %}
     </body>
 </html>
