@@ -16,11 +16,12 @@ def generate_report(request):
             infForm = formularioCrearReporte.cleaned_data
             motivo_reporte = infForm['movtivo_reporte']
             cod_cliente = infForm['num_usuario']
-            usuarioBD = usuario.objects.all()
             #Guardar reporte en BD
             tecnicoBD = tecnico.objects.all()
-            rep = reporte(motivo_reporte=motivo_reporte, codigo_cliente=usuarioBD[cod_cliente-1], codigo_tecnico=tecnicoBD[0]) #ostia puta q hice aqui q crack
+            usuarioBD = usuario.objects.get(codigo_cliente=cod_cliente)
+            rep = reporte(motivo_reporte=motivo_reporte, codigo_cliente=usuarioBD, codigo_tecnico=tecnicoBD[0]) #ostia puta q hice aqui q crack
                 #cod_cliente-1 funca pq los datos se guardan en serial auto
+                #jaja trolleado no funciona
             rep.save()
             folio_reporte = reporte.objects.latest('folio')
             context = {
@@ -94,8 +95,13 @@ def register_user(request):
 
             usr = usuario(nombre=infForm['nombre'], telefono=infForm['telefono'], codigo_domicilio=ultimoDomicilio)
             usr.save()
-
-            return render(request, 'user_registered.html')
+            ultimoUsuario = usuario.objects.latest('codigo_cliente')
+            codCliente = ultimoUsuario.codigo_cliente
+            userCTX = usuario.objects.get(codigo_cliente=codCliente)
+            context = {
+                'usuario' : userCTX,
+            }
+            return render(request, 'user_registered.html', context)
     else:
         formularioRegistrarUsuario=formulario_registrar_usuario()
     return render(request, 'register_user.html', {'form': formularioRegistrarUsuario})
