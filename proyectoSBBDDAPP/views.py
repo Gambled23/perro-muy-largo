@@ -80,3 +80,7 @@ def faq(request):
 def test(request):
 
     return render(request, 'test.html')
+
+def register_user(request):
+
+    return render(request, 'register_user.html')
