@@ -19,18 +19,24 @@ def generate_report(request):
             cod_cliente = infForm['num_usuario']
             #Guardar reporte en BD
             tecnicoBD = tecnico.objects.all()
-            
-            usuarioBD = usuario.objects.get(codigo_cliente=cod_cliente)
-            rep = reporte(motivo_reporte=motivo_reporte, codigo_cliente=usuarioBD, codigo_tecnico=tecnicoBD[0]) #ostia puta q hice aqui q crack
+
+            if usuario.objects.filter(codigo_cliente=cod_cliente).exists(): #Si sí existe
+                usuarioBD = usuario.objects.get(codigo_cliente=cod_cliente)
+                rep = reporte(motivo_reporte=motivo_reporte, codigo_cliente=usuarioBD, codigo_tecnico=tecnicoBD[0]) #ostia puta q hice aqui q crack
                 #cod_cliente-1 funca pq los datos se guardan en serial auto
                 #jaja trolleado no funciona
-            rep.save()
-            folio_reporte = reporte.objects.latest('folio')
-            context = {
-                'motivo_reporte' : motivo_reporte,
-                'folio_reporte' : folio_reporte.folio,
-            }
-            return render(request, 'generated_report.html', context)
+                rep.save()
+                folio_reporte = reporte.objects.latest('folio')
+                context = {
+                    'motivo_reporte' : motivo_reporte,
+                    'folio_reporte' : folio_reporte.folio,}
+                return render(request, 'generated_report.html', context)
+            else: #Si no existe
+                messages.info(request, f'El cliente con codigo {cod_cliente} no existe')
+                return render(request, 'generate_report.html', {'form': formularioCrearReporte})
+
+           
+            
     else:
         formularioCrearReporte=formulario_reporte()
         
