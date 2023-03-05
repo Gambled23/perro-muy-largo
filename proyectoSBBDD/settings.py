@@ -105,6 +105,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+CSRF_TRUSTED_ORIGINS = ["https://proyecto-sbbdd.azurewebsites.net", "https://www.proyecto-sbbdd.azurewebsites.net"]
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
