@@ -1,4 +1,5 @@
 from django.shortcuts import render, HttpResponse
+from django.contrib import messages
 from proyectoSBBDDAPP.models import tecnico
 from proyectoSBBDD.forms import formulario_reporte, formulario_contacto, formulario_estado_reporte, formulario_registrar_usuario
 from proyectoSBBDDAPP.models import reporte, usuario, tecnico, domicilio, registros
@@ -18,6 +19,7 @@ def generate_report(request):
             cod_cliente = infForm['num_usuario']
             #Guardar reporte en BD
             tecnicoBD = tecnico.objects.all()
+            
             usuarioBD = usuario.objects.get(codigo_cliente=cod_cliente)
             rep = reporte(motivo_reporte=motivo_reporte, codigo_cliente=usuarioBD, codigo_tecnico=tecnicoBD[0]) #ostia puta q hice aqui q crack
                 #cod_cliente-1 funca pq los datos se guardan en serial auto
@@ -46,11 +48,15 @@ def report_status(request):
 
             #Buscar consulta en BD
             folio_reporte = infForm['folio_reporte']
-            reporteConsultado = reporte.objects.get(folio=folio_reporte)
-            context = {
-                'reporte' : reporteConsultado,
-            }
-            return render(request, 'report_found.html', context)
+            if reporte.objects.filter(folio=folio_reporte).exists(): #Si sí existe
+                reporteConsultado = reporte.objects.get(folio=folio_reporte)
+                context = {
+                'reporte' : reporteConsultado,}  
+                return render(request, 'report_found.html', context)
+            else: #Si no existe
+                messages.info(request, 'No se ha encontrado el reporte en nuestra base de datos')
+                return render(request, 'report_status.html', {'form': formularioConsultarReporte})
+            
     else:
         formularioConsultarReporte=formulario_estado_reporte()
         
