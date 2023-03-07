@@ -1,20 +1,32 @@
 <html>
+
 <body>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-sm">
-                <button type="button" class="btn btn-link" onclick="location.href = `{% url 'generate_report' %}`">Generar reporte</button>
-            </div>
-            <div class="col-sm">
-                <button type="button" class="btn btn-link" onclick="location.href = `{% url 'report_status' %}`">Consultar reporte</button>
-            </div>
-            <div class="col-sm">
-                <button type="button" class="btn btn-link" onclick="location.href = `{% url 'register_user' %}`">Registrar usuario</button>
-            </div>
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;"> 
+        <a class="navbar-brand" href="#">Nuestras operaciones: </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
+            aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">Inicio <span class="sr-only">(actual)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'generate_report' %}">Generar reporte</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'report_status' %}">Consultar reporte</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'register_user' %}">Registrar usuario</a>
+                </li>
+            </ul>
+            <span class="navbar-text">
+                
+            </span>
         </div>
-    </div>
-
-
+    </nav>
 </body>
 
 </html>
