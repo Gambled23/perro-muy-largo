@@ -1,4 +1,0 @@
-{
-    "appService.defaultWebAppToDeploy": "/subscriptions/2261b819-172d-446f-815f-d62d91d3f430/resourceGroups/appsvc_linux_centralus_basic/providers/Microsoft.Web/sites/proyecto-sbbdd",
-    "appService.deploySubpath": "."
-}
