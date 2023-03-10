@@ -1,3 +1,4 @@
+import variables
 from django.shortcuts import render, HttpResponse
 from django.contrib import messages
 from proyectoSBBDDAPP.models import tecnico
@@ -112,6 +113,7 @@ def register_user(request):
             userCTX = usuario.objects.get(codigo_cliente=codCliente)
             context = {
                 'usuario' : userCTX,
+                'logoEmpresa' : variables.logoEmpresa,
             }
             return render(request, 'user_registered.html', context)
     else:

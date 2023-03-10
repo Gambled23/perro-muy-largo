@@ -2,16 +2,44 @@
 {% block title %}Registrar usuario{% endblock %}
 
 <html>
-    <body>
-        {% block content %}
-        <form action="" method="POST"> {% csrf_token %}
 
-            <table>
-                {{form.as_table}}
-            </table>
-            <input type="submit" value="Registrar">
-            
-        </form>
+<body>
+
+    {% block content %}
+
+    <div class="container h-auto">
+        <div class="row d-flex justify-content-center align-items-center h-80">
+            <div class="col-xl-10">
+                <div class="card rounded-3 text-black w-auto">
+                    <div class="row g-0">
+                        <div class="col-12">
+                            <div class="card-body p-md-5 mx-md-4">
+
+                                <div class="text-center">
+                                    <img src="https://i.imgur.com/SQou7ww.jpeg"
+                                        style="width: 185px;" alt="logo">
+                                    <h4 class="mt-1 mb-5 pb-1">Registrar usuario</h4>
+                                </div>
+                                <div class="row text-md-center">
+                                    <div class="mx-auto col-lg-10 col-md-8 col-lg-6">
+                                        <form action="" method="POST"> {% csrf_token %}
+
+                                            <table>
+                                                {{form.as_table}}
+                                            </table>
+                                            <input type="submit" value="Registrar">
+
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         {% endblock %}
-    </body>
+</body>
+
 </html>
