@@ -3,14 +3,101 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
+
 <body>
     {% block content %}
-    FAQ
+    <div class="d-flex justify-content-center">
+        <div class="accordion accordion-flush" id="accordionFlushExample">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-headingOne">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                        <h3>¿Es necesario estar registrado para hacer un reporte?</h3>
+                    </button>
+                </h2>
+                <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
+                    data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">Así es. Para poder hacer un reporte primero debes registrar tu usuario
+                        <a href="{% url 'register_user' %}">aquí</a></div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-headingTwo">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                        <h3>Olvidé mi número de reporte ¿qué puedo hacer?</h3>
+                    </button>
+                </h2>
+                <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo"
+                    data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">Dirigete a la <a href="{% url 'contact' %}">sección de contacto</a> y
+                        dejanos tus datos, en breve nos
+                        comunicaremos contigo</div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-headingThree">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                        <h3>¿Cuanto tiempo tardarán en contactarse conmigo despues de enviar mis datos?</h3>
+                    </button>
+                </h2>
+                <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree"
+                    data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">El tiempo de espera depende de la cantidad de requisitos que tengamos,
+                        intentamos comunicarnos en el
+                        menor tiempo posible</div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-headingThree">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
+                        <h3>¿Cuanto tiempo tardarán en atender mi reporte?</h3>
+                    </button>
+                </h2>
+                <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingThree"
+                    data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">El tiempo de espera depende de la cantidad de reportes que tengamos,
+                        hacemos todo lo posible para atender
+                        todos en el menor tiempo posible</div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-headingFour">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#flush-collapseSix" aria-expanded="false" aria-controls="flush-collapseSix">
+                        <h3>Datos erroneos/no existentes</h3>
+                    </button>
+                </h2>
+                <div id="flush-collapseSix" class="accordion-collapse collapse" aria-labelledby="flush-headingThree"
+                    data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">Si el sistema te alerta sobre datos que no existen, verifica que hayas escrito bien tu número de cliente/reporte</div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-headingFour">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#flush-collapseFive" aria-expanded="false" aria-controls="flush-collapseFive">
+                        <h3>Tengo una sugerencia o queja del servicio</h3>
+                    </button>
+                </h2>
+                <div id="flush-collapseFive" class="accordion-collapse collapse" aria-labelledby="flush-headingThree"
+                    data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">Estamos mejorando constantemente, si quieres comunicarnos tus opiniones puedes hacerlo <a href="{% url 'contact' %}">aquí</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     {% endblock %}
 </body>
+
 </html>
