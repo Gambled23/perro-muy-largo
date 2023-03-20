@@ -1,2 +1,6 @@
 .venv
 .vscode
+__pycache__
+proyectoSBBDDAPP\__pycache__
+proyectoSBBDD\__pycache__
+proyectoSBBDDAPP\migrations\__pycache__
