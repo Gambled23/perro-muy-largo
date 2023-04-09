@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-e+&&@datwq4-!@u1zu)4j3y&!#h$pmyx+qw0+@9=)ou)gxdasq
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['proyecto-sbbdd.azurewebsites.net', '127.0.0.1']
+ALLOWED_HOSTS = ['proyecto-sbbdd.azurewebsites.net', '127.0.0.1', 'republicadelmeme.lat']
 
 
 # Application definition
