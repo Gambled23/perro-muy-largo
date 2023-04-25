@@ -30,4 +30,6 @@ class formulario_registrar_usuario(forms.Form):
     nombre = forms.CharField(max_length=50) 
     telefono = forms.Field()
    
-    
+class formulario_faq(forms.Form):
+    email = forms.EmailField()
+    descripcion = forms.CharField(widget=forms.TextInput(attrs={'size':80}))

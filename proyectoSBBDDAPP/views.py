@@ -2,7 +2,7 @@ import variables
 from django.shortcuts import render, HttpResponse
 from django.contrib import messages
 from proyectoSBBDDAPP.models import tecnico
-from proyectoSBBDD.forms import formulario_reporte, formulario_contacto, formulario_estado_reporte, formulario_registrar_usuario
+from proyectoSBBDD.forms import formulario_reporte, formulario_contacto, formulario_estado_reporte, formulario_registrar_usuario, formulario_faq
 from proyectoSBBDDAPP.models import reporte, usuario, tecnico, domicilio, registros
 
 def home(request):
@@ -85,9 +85,15 @@ def contact(request):
     return render(request, 'contact.html', {'form': formularioCrearReporte})
 
 def faq(request):
-    
-
-    return render(request, 'faq.html')
+    if request.method=='POST': #Qué se hará al usar el metodo post
+        formularioFAQ = formulario_faq(request.POST) #para que en el formulario venga la informacion que introdujo el usuario en POST
+        if formularioFAQ.is_valid():
+            infForm = formularioFAQ.cleaned_data
+            #AQUÍ HACER LO Q SE TENGA Q HACER CON EL FORM
+            return render(request, 'faq.html')
+    else:
+        formularioFAQ=formulario_faq()
+    return render(request, 'contact.html', {'form': formularioFAQ})
 
 def test(request):
 
