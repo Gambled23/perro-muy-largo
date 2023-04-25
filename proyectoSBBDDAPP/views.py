@@ -93,7 +93,7 @@ def faq(request):
             return render(request, 'faq.html')
     else:
         formularioFAQ=formulario_faq()
-    return render(request, 'contact.html', {'form': formularioFAQ})
+    return render(request, 'faq.html', {'form': formularioFAQ})
 
 def test(request):
 
