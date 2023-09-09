@@ -78,10 +78,10 @@ WSGI_APPLICATION = 'proyectoSBBDD.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'proyectosbbdd',
-        'USER': 'postgres',
-        'PASSWORD': 'RTvAsfCAv3neSn',
-        'HOST': 'serverproyectoxdbbdd.postgres.database.azure.com',
+        'NAME': '',
+        'USER': '',
+        'PASSWORD': '',
+        'HOST': '',
         'DATABASE_PORT': '5432',
     }
 }
